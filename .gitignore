@@ -54,4 +54,4 @@ docs/_build/
 
 # Pycharm Stuff:
 .idea/
-.idea/workspace.xml
+workspace.xml
