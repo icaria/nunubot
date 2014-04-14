@@ -2,8 +2,9 @@ var app = angular.module('AutoGrowTable', []);
 
 app.controller("Records", function ($scope) {
 
-  function createEmptyRow() {
+  function createEmptyRow($index) {
     return {
+        trans_number: $index,
         description: "",
         year: null,
         month: null,
@@ -15,7 +16,7 @@ app.controller("Records", function ($scope) {
   }
   
   var rows = [];
-  rows.push(createEmptyRow());
+  rows.push(createEmptyRow(0));
 
   $scope.change = function ($index) {
     var row = rows[$index];
@@ -23,12 +24,11 @@ app.controller("Records", function ($scope) {
       rows.splice($index, 1);
     }
     else if ($index == $scope.rows.length - 1) {
-      rows.push(createEmptyRow());
+      rows.push(createEmptyRow($index + 1));
     }
   };
   
   $scope.move = function ($index, $event) {
-      alert($index);
     switch ($event.keyCode) {
       case 38:
         if ($index > 0) {
@@ -43,7 +43,6 @@ app.controller("Records", function ($scope) {
         break;
         
       case 40:
-          alert( rows.length - 1);
         if ($event.ctrlKey && $index < rows.length - 2) {
           // Ctrl+Down
           var next = rows.splice($index + 1, 1);
@@ -64,7 +63,12 @@ app.controller("Records", function ($scope) {
   $scope.setCurrentRow = function (rowNum) {
     $scope.currentRow = rowNum;
   };
-  
+
+  $scope.submit = function () {
+    var sortedSet = rows.slice(0, rows.length-1);
+    sortedSet.sort(sortMultiple("description", "trans_number"));
+  };
+
   $scope.rows = rows;
   $scope.currentRow = null;
 });
@@ -101,3 +105,34 @@ app.directive('focus', function () {
     });
   }
 });
+
+
+
+function sortFunction(property) {
+    var sortOrder = 1;
+    if(property[0] === "-") {
+        sortOrder = -1;
+        property = property.substr(1);
+    }
+    return function (a,b) {
+        var aString = a[property].toUpperCase()
+        var bString = b[property].toUpperCase()
+        var result = (aString < bString) ? -1 : (aString > bString) ? 1 : 0;
+        return result * sortOrder;
+    }
+}
+
+function sortMultiple() {
+    var props = arguments;
+    return function (obj1, obj2) {
+        var i = 0, result = 0, numberOfProperties = props.length;
+        /* try getting a different result from 0 (equal)
+         * as long as we have extra properties to compare
+         */
+        while(result === 0 && i < numberOfProperties) {
+            result = sortFunction(props[i])(obj1, obj2);
+            i++;
+        }
+        return result;
+    }
+}
