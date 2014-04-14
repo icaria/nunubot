@@ -15,7 +15,6 @@ app.controller("Records", function ($scope) {
   }
   
   var rows = [];
-  //rows.push();
   rows.push(createEmptyRow());
 
   $scope.change = function ($index) {

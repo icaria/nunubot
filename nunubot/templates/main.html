@@ -22,8 +22,7 @@
                         <span class="badge">{{ $index + 1 }}</span>
                     </td>
                     <td>
-                        <input type="text" name="Records[$index].Description" class="form-control" placeholder="Description" autocomplete="off" ng-model="row.description"
-                                ng-change="change($index)" ng-keyup="move($index, $event)" ng-focus="setCurrentRow($index)" ng-blur="setCurrentRow(null)" focus="{{ currentRow == $index }}" />
+                        <input type="text" name="Records[$index].Description" class="form-control" placeholder="Description" autocomplete="off" ng-model="row.description" ng-change="change($index)" ng-keyup="move($index, $event)" ng-focus="setCurrentRow($index)" ng-blur="setCurrentRow(null)" focus="{{ currentRow == $index }}" />
                     </td>
                     <td>
                         <input type="number" name="Records[$index].Year" class="form-control" placeholder="Year" ng-model="row.year" />
