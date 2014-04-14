@@ -1,17 +1,46 @@
 {% extends "layout.html" %}
+<script type="text/javascript" src="../static/js/auto-grow-table.js"></script>
 {% block body %}
-<table>
-    <thead>
-        <tr>
-            <th>Transaction Number</th>
-            <th>Description</th>
-            <th>Year</th>
-            <th>Month</th>
-            <th>Day</th>
-            <th>Activity</th>
-            <th>Quantity</th>
-            <th>Amount</th>
-        </tr>
-    </thead>
-</table>
+<body ng-app="AutoGrowTable">
+<form action="main.html" method="post">
+    <table class="table" ng-controller="Records">
+        <thead>
+            <tr>
+                <th>Transaction Number</th>
+                <th>Description</th>
+                <th>Year</th>
+                <th>Month</th>
+                <th>Day</th>
+                <th>Activity</th>
+                <th>Quantity</th>
+                <th>Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="row in rows" ng-focus="currentRow = $index">
+                <td>
+                    {{$index + 1}}
+                </td>
+                <td>
+                    <input type="text" name="Person[{{$index}}].Name" class="input-block-level" autocomplete="off" placeholder="請輸入姓名 ..."
+                       ng-model="row.name" ng-change="change($index)" ng-keyup="move($index, $event)"
+                       ng-focus="setCurrentRow($index)" ng-blur="setCurrentRow(null)" focus="{{ currentRow == $index }}" />
+                </td>
+                <td>
+                    <input type="number" name="Person[{{$index}}].Age" class="input-block-level"
+                       ng-model="row.age" ng-style="requireName($index)" />
+                </td>
+                <td>
+                    <input type="file" name="Person[{{$index}}].PostedFile"
+                       ng-style="requireName($index)" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</form>
+</body>
 {% endblock %}
+
+<script type="text/javascript">
+
+</script>
