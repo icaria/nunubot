@@ -1,26 +1,35 @@
 var app = angular.module('AutoGrowTable', []);
 
 app.controller("Records", function ($scope) {
-  
-  function createDefault() {
-    return { name: "", age: 0 };
+
+  function createEmptyRow() {
+    return {
+        description: "",
+        year: null,
+        month: null,
+        day: null,
+        activity: "",
+        quantity: null,
+        amount: null
+    };
   }
   
   var rows = [];
-  rows.push(createDefault());
+  //rows.push();
+  rows.push(createEmptyRow());
 
   $scope.change = function ($index) {
     var row = rows[$index];
-    
-    if (row.name === "") {
+    if (row.description === "") {
       rows.splice($index, 1);
     }
     else if ($index == $scope.rows.length - 1) {
-      rows.push(createDefault());
+      rows.push(createEmptyRow());
     }
   };
   
   $scope.move = function ($index, $event) {
+      alert($index);
     switch ($event.keyCode) {
       case 38:
         if ($index > 0) {
@@ -35,6 +44,7 @@ app.controller("Records", function ($scope) {
         break;
         
       case 40:
+          alert( rows.length - 1);
         if ($event.ctrlKey && $index < rows.length - 2) {
           // Ctrl+Down
           var next = rows.splice($index + 1, 1);
@@ -51,14 +61,10 @@ app.controller("Records", function ($scope) {
   $scope.clearAll = function () {
     rows.splice(0, rows.length - 1);
   };
-  
-  $scope.requireName = function ($index) {
-    return { display: rows[$index].name === "" ? "none" : "" };
-  };
-  
+
   $scope.setCurrentRow = function (rowNum) {
     $scope.currentRow = rowNum;
-  }
+  };
   
   $scope.rows = rows;
   $scope.currentRow = null;
