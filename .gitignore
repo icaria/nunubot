@@ -55,3 +55,5 @@ docs/_build/
 # Pycharm Stuff:
 .idea/
 workspace.xml
+
+nunubot/.idea/workspace.xml
