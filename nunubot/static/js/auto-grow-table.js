@@ -2,8 +2,6 @@ var app = angular.module('investment', []);
 
 app.controller("records", function ($scope) {
 
-
-
   function createEmptyRow($index) {
     return {
         trans_number: $index,
@@ -95,6 +93,7 @@ app.controller("records", function ($scope) {
     progressTab.delay(1000).fadeOut();
     outputTab.delay(2000).fadeIn();
   }
+
   $scope.rows = rows;
   $scope.currentRow = null;
 });
@@ -131,8 +130,6 @@ app.directive('focus', function () {
     });
   }
 });
-
-
 
 function sortFunction(property) {
     var sortOrder = 1;

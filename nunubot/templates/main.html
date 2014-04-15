@@ -1,4 +1,7 @@
 {% extends "layout.html" %}
+{% block title %}
+<title>Q - Consume</title>
+{% endblock %}
 {% block body %}
 {% raw %}
 <div class="container" ng-app="investment">
@@ -65,7 +68,7 @@
                 </div>
             </div>
         </div>
-        <div class="tab-pane col-md-offset-2 col-md-8" style="padding-top: 200px" id="progressTab">
+        <div class="tab-pane col-md-offset-2 col-md-8 break" id="progressTab">
             <div class="progress progress-striped active" >
                 <div class="progress-bar" role="progressBar" aria-valuetransitiongoal="100" aria-value></div>
             </div>
