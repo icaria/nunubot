@@ -761,6 +761,7 @@ pre code {
   margin-left: auto;
 }
 .row {
+  margin-top: 20px;
   margin-right: -15px;
   margin-left: -15px;
 }
@@ -3634,6 +3635,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .tab-content > .active {
   display: block;
 }
+.tab-content {
+    padding-top: 10px;
+}
 .nav-tabs .dropdown-menu {
   margin-top: -1px;
   border-top-left-radius: 0;
@@ -5643,6 +5647,8 @@ button.close {
 }
 .pull-right {
   float: right !important;
+  padding-right: 24px;
+  border-radius: 6px;
 }
 .pull-left {
   float: left !important;

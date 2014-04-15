@@ -1,63 +1,75 @@
 {% extends "layout.html" %}
 {% block body %}
 {% raw %}
-<div class="container" ng-app="AutoGrowTable" >
-    <form ng-controller="Records">
-        <div class="col-md-12 well well-sm">
-            <table id="inputTable" class="table" >
-                <thead>
-                    <tr>
-                        <th><p class="text-center">#</p></th>
-                        <th><p>Description</p></th>
-                        <th><p>Year</p></th>
-                        <th><p>Month</p></th>
-                        <th><p>Day</p></th>
-                        <th><p>Activity</p></th>
-                        <th><p class="text-right">Quantity</p></th>
-                        <th><p class="text-right">Amount</p></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="row in rows" ng-focus="currentRow = $index">
-                        <td style="vertical-align: middle">
-                            <span class="label label-primary">{{ $index + 1 }}</span>
-                        </td>
-                        <td>
-                            <input type="text" name="Records[$index].Description" class="form-control" placeholder="Description" autocomplete="off" ng-model="row.description" ng-change="change($index)" ng-keyup="move($index, $event)" ng-focus="setCurrentRow($index)" ng-blur="setCurrentRow(null)" focus="{{ currentRow == $index }}" />
-                        </td>
-                        <td>
-                            <input type="number" name="Records[$index].Year" class="form-control" placeholder="Year" ng-model="row.year" />
-                        </td>
-                        <td>
-                            <input type="number" name="Records[$index].Month" class="form-control" placeholder="Month" ng-model="row.month" />
-                        </td>
-                        <td>
-                            <input type="number" name="Records[$index].Day" class="form-control" placeholder="Day" ng-model="row.day" />
-                        </td>
-                        <td>
-                            <input type="text" name="Records[$index].Activity" class="form-control" placeholder="Activity" ng-model="row.activity" />
-                        </td>
-                        <td >
-                            <input type="text" step="0.0001" name="Records[$index].Quantity" class="form-control text-right" placeholder="Quantity" ng-model="row.quantity" />
-                        </td>
-                        <td>
-                            <input type="text" step="0.0001" name="Records[$index].Amount" class="form-control text-right" placeholder="Amount" ng-model="row.amount" />
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="pull-right">
-            <div class="form-actions btn-group col-md-12">
-                <a class="btn btn-primary btn-group-lg" ng-click="submit()">Submit</a>
-                <a href="#" class="btn btn-default btn-group-lg" ng-click="clearAll()">Clear All</a>
+<div class="container" ng-app="AutoGrowTable">
+    <div id="tabContent" class="tab-content" ng-controller="Records">
+        <div class="tab-pane active" id="inputTab">
+            <form class="well well-lg">
+                <div class="row form-horizontal">
+                    <div class="form-group">
+                        <label for="revenue" class="col-sm-1 control-label">Revenue</label>
+                        <div class="col-sm-3">
+                            <input id="revenue" type="text" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <table class="table form-group">
+                        <thead>
+                            <tr>
+                                <th><p class="text-center">#</p></th>
+                                <th><p>Description</p></th>
+                                <th><p>Year</p></th>
+                                <th><p>Month</p></th>
+                                <th><p>Day</p></th>
+                                <th><p>Activity</p></th>
+                                <th><p class="text-right">Quantity</p></th>
+                                <th><p class="text-right">Amount</p></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="row in rows" ng-focus="currentRow = $index">
+                                <td style="vertical-align: middle">
+                                    <span class="label label-primary">{{ $index + 1 }}</span>
+                                </td>
+                                <td>
+                                    <input type="text" name="Records[$index].Description" class="form-control" placeholder="Description" autocomplete="off" ng-model="row.description" ng-change="change($index)" ng-keyup="move($index, $event)" ng-focus="setCurrentRow($index)" ng-blur="setCurrentRow(null)" focus="{{ currentRow == $index }}" />
+                                </td>
+                                <td>
+                                    <input type="number" name="Records[$index].Year" class="form-control" placeholder="Year" ng-model="row.year" />
+                                </td>
+                                <td>
+                                    <input type="number" name="Records[$index].Month" class="form-control" placeholder="Month" ng-model="row.month" />
+                                </td>
+                                <td>
+                                    <input type="number" name="Records[$index].Day" class="form-control" placeholder="Day" ng-model="row.day" />
+                                </td>
+                                <td>
+                                    <input type="text" name="Records[$index].Activity" class="form-control" placeholder="Activity" ng-model="row.activity" />
+                                </td>
+                                <td >
+                                    <input type="text" step="0.0001" name="Records[$index].Quantity" class="form-control text-right" placeholder="Quantity" ng-model="row.quantity" />
+                                </td>
+                                <td>
+                                    <input type="text" step="0.0001" name="Records[$index].Amount" class="form-control text-right" placeholder="Amount" ng-model="row.amount" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </form>
+            <div class="row pull-right">
+                <div class="form-group btn-group">
+                    <a class="btn btn-primary btn-group-lg" ng-click="submit()">Submit</a>
+                    <a href="#" class="btn btn-default btn-group-lg" ng-click="clearAll()">Clear All</a>
+                </div>
             </div>
         </div>
-    </form>
+        <div class="tab-pane" id="outputTab">
+            Hello World
+        </div>
+    </div>
 </div>
 {% endraw %}
 {% endblock %}
 
-<script type="text/javascript">
-
-</script>

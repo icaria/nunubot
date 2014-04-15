@@ -67,6 +67,8 @@ app.controller("Records", function ($scope) {
   $scope.submit = function () {
     var sortedSet = rows.slice(0, rows.length-1);
     sortedSet.sort(sortMultiple("description", "trans_number"));
+    $("#inputTab").fadeOut();
+    $("#outputTab").delay(1000).fadeIn();
   };
 
   $scope.rows = rows;
