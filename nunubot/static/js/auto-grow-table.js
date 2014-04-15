@@ -66,11 +66,22 @@ app.controller("records", function ($scope) {
     $scope.currentRow = rowNum;
   };
 
-  var progressInterval;
   $scope.submit = function () {
     var sortedSet = rows.slice(0, rows.length-1);
     sortedSet.sort(sortMultiple("description", "trans_number"));
     transition();
+  };
+
+  $scope.export = function () {
+    alert("black");
+  };
+
+  $scope.back = function () {
+    var inputTab = $("#inputTab");
+    var outputTab = $("#outputTab");
+    outputTab.hide();
+    inputTab.show();
+    $('.progress .progress-bar').attr('aria-valuetransitiongoal', 0).progressbar();
   };
 
   function transition()
@@ -80,7 +91,7 @@ app.controller("records", function ($scope) {
     var outputTab = $("#outputTab");
     inputTab.hide();
     progressTab.show();
-    $('.progress .progress-bar').progressbar();
+    $('.progress .progress-bar').attr('aria-valuetransitiongoal', 100).progressbar({display_text: 'fill'});
     progressTab.delay(1000).fadeOut();
     outputTab.delay(2000).fadeIn();
   }
