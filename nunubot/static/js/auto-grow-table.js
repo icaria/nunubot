@@ -1,6 +1,8 @@
-var app = angular.module('AutoGrowTable', []);
+var app = angular.module('investment', []);
 
-app.controller("Records", function ($scope) {
+app.controller("records", function ($scope) {
+
+
 
   function createEmptyRow($index) {
     return {
@@ -64,13 +66,24 @@ app.controller("Records", function ($scope) {
     $scope.currentRow = rowNum;
   };
 
+  var progressInterval;
   $scope.submit = function () {
     var sortedSet = rows.slice(0, rows.length-1);
     sortedSet.sort(sortMultiple("description", "trans_number"));
-    $("#inputTab").fadeOut();
-    $("#outputTab").delay(1000).fadeIn();
+    transition();
   };
 
+  function transition()
+  {
+    var inputTab = $("#inputTab");
+    var progressTab = $("#progressTab");
+    var outputTab = $("#outputTab");
+    inputTab.hide();
+    progressTab.show();
+    $('.progress .progress-bar').progressbar();
+    progressTab.delay(1000).fadeOut();
+    outputTab.delay(2000).fadeIn();
+  }
   $scope.rows = rows;
   $scope.currentRow = null;
 });

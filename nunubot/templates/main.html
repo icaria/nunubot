@@ -1,8 +1,8 @@
 {% extends "layout.html" %}
 {% block body %}
 {% raw %}
-<div class="container" ng-app="AutoGrowTable">
-    <div id="tabContent" class="tab-content" ng-controller="Records">
+<div class="container" ng-app="investment">
+    <div id="tabContent" class="tab-content" ng-controller="records">
         <div class="tab-pane active" id="inputTab">
             <form class="well well-lg">
                 <div class="row form-horizontal">
@@ -63,6 +63,11 @@
                     <a class="btn btn-primary btn-group-lg" ng-click="submit()">Submit</a>
                     <a href="#" class="btn btn-default btn-group-lg" ng-click="clearAll()">Clear All</a>
                 </div>
+            </div>
+        </div>
+        <div class="tab-pane col-md-offset-2 col-md-8" style="padding-top: 200px" id="progressTab">
+            <div class="progress" >
+                <div class="progress-bar" role="progressBar" aria-valuetransitiongoal="100"></div>
             </div>
         </div>
         <div class="tab-pane" id="outputTab">
