@@ -2,7 +2,15 @@
 {% block title %}
 <title>Prototype Frozen Rain</title>
 {% endblock %}
-<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css">
+
+{% block includes %}
+    <link rel="stylesheet" type="text/css" href="../../static/bootstrap/css/bootstrap.css">
+    <script type="text/javascript" src="../../static/angular/angular.min.js"></script>
+    <script type="text/javascript" src="../../static/jquery/jquery-2.1.0.min.js"></script>
+    <script type="text/javascript" src="../../static/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../static/bootstrap/js/bootstrap-progressbar.min.js"></script>
+    <script type="text/javascript" src="../scripts/auto-grow-table.js"></script>
+{% endblock %}
 
 {% block topnav %}
 <div class="container">
@@ -23,7 +31,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
-        <li><a href="./">Logout</a></li>
+        <li><a href="../">Logout</a></li>
       </ul>
     </div><!--/.nav-collapse -->
   </div>
@@ -33,11 +41,4 @@
 {% block body %}
 {% endblock %}
 
-{% block includes %}
-    <script type="text/javascript" src="../static/js/angular.min.js"></script>
-    <script type="text/javascript" src="../static/js/jquery-2.1.0.min.js"></script>
-    <script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../static/js/bootstrap-progressbar.min.js"></script>
-    <script type="text/javascript" src="../static/js/auto-grow-table.js"></script>
-{% endblock %}
 
