@@ -1,0 +1,4 @@
+- validation
+- routes
+- rename/move auto-grow-table to be "main.js"
+- auto-grow-table should be a directive, with route-specific logic moved to a "main" controller.

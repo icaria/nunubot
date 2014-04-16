@@ -1,9 +1,24 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-</head>
-<body>
-Hello World
-</body>
-</html>
+<!doctype html>
+{% block title %}
+
+<title>Prototype Frozen Rain</title>
+
+{% endblock %}
+
+{% block includes %}
+
+    <link rel="stylesheet" type="text/css" href="../static/bootstrap/css/bootstrap.css">
+
+    <script type="text/javascript" src="../static/angular/angular.min.js"></script>
+    <script type="text/javascript" src="../static/jquery/jquery-2.1.0.min.js"></script>
+    <script type="text/javascript" src="../static/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../static/bootstrap/js/bootstrap-progressbar.min.js"></script>
+
+    <script type="text/javascript" src="scripts/investment.js"></script>
+
+{% endblock %}
+
+<div ng-switch="loggedIn">
+	<div ng-switch-when="0" ng-include="views/login.html"></div>
+	<div ng-switch-when="0" ng-include="views/main.html"></div>
+</div>
